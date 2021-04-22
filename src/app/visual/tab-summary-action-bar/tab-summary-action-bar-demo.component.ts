@@ -1,11 +1,5 @@
-import {
-  Component
-} from '@angular/core';
-
-import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
+import { Component } from '@angular/core';
+import { SkyThemeService, SkyThemeSettings } from '@skyux/theme';
 
 @Component({
   selector: 'sky-tab-summary-action-bar-demo',
@@ -13,10 +7,7 @@ import {
   styleUrls: ['./tab-summary-action-bar-demo.component.scss']
 })
 export class SkyTabSummaryActionBarDemoComponent {
-
-  constructor(
-    private themeSvc: SkyThemeService
-  ) { }
+  constructor(private themeSvc: SkyThemeService) {}
 
   public printHello() {
     console.log('hello');

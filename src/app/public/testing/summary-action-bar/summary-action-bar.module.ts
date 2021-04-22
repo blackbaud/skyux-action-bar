@@ -1,14 +1,6 @@
-import {
-  NgModule
-} from '@angular/core';
-
-import {
-  NoopAnimationsModule
-} from '@angular/platform-browser/animations';
-
-import {
-  SkySummaryActionBarModule
-} from '@skyux/action-bars';
+import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SkySummaryActionBarModule } from '@skyux/action-bars';
 
 @NgModule({
   exports: [
@@ -19,4 +11,4 @@ import {
     NoopAnimationsModule
   ]
 })
-export class SkySummaryActionBarTestingModule { }
+export class SkySummaryActionBarTestingModule {}

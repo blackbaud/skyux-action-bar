@@ -1,20 +1,15 @@
-import {
-  NgModule
-} from '@angular/core';
+import { NgModule } from '@angular/core';
+import { SKY_LIB_RESOURCES_PROVIDERS } from '@skyux/i18n';
 
-import {
-  SKY_LIB_RESOURCES_PROVIDERS
-} from '@skyux/i18n';
-
-import {
-  SkyActionBarsResourcesProvider
-} from '../../plugin-resources/action-bars-resources-provider';
+import { SkyActionBarsResourcesProvider } from '../../plugin-resources/action-bars-resources-provider';
 
 @NgModule({
-  providers: [{
-    provide: SKY_LIB_RESOURCES_PROVIDERS,
-    useClass: SkyActionBarsResourcesProvider,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: SKY_LIB_RESOURCES_PROVIDERS,
+      useClass: SkyActionBarsResourcesProvider,
+      multi: true
+    }
+  ]
 })
-export class SkyActionBarsResourcesModule { }
+export class SkyActionBarsResourcesModule {}

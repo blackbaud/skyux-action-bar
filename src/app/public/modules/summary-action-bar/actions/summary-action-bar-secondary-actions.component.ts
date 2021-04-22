@@ -7,19 +7,11 @@ import {
   QueryList,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { SkyMediaBreakpoints, SkyMediaQueryService } from '@skyux/core';
 
-import {
-  Subscription
-} from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import {
-  SkyMediaBreakpoints,
-  SkyMediaQueryService
-} from '@skyux/core';
-
-import {
-  SkySummaryActionBarSecondaryActionComponent
-} from './summary-action-bar-secondary-action.component';
+import { SkySummaryActionBarSecondaryActionComponent } from './summary-action-bar-secondary-action.component';
 
 /**
  * Contains secondary actions specified with `sky-summary-action-bar-secondary-action`
@@ -30,8 +22,8 @@ import {
   templateUrl: './summary-action-bar-secondary-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkySummaryActionBarSecondaryActionsComponent implements AfterContentInit, OnDestroy {
-
+export class SkySummaryActionBarSecondaryActionsComponent
+  implements AfterContentInit, OnDestroy {
   @ContentChildren(SkySummaryActionBarSecondaryActionComponent)
   public secondaryActionComponents: QueryList<SkySummaryActionBarSecondaryActionComponent>;
 
@@ -43,17 +35,21 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
   constructor(
     private changeDetector: ChangeDetectorRef,
     private mediaQueryService: SkyMediaQueryService
-  ) { }
+  ) {}
 
   public ngAfterContentInit(): void {
-    this.mediaQuerySubscription = this.mediaQueryService.subscribe((args: SkyMediaBreakpoints) => {
-      this.isMobile = args === SkyMediaBreakpoints.xs;
-      this.checkAndUpdateChildrenType();
-    });
+    this.mediaQuerySubscription = this.mediaQueryService.subscribe(
+      (args: SkyMediaBreakpoints) => {
+        this.isMobile = args === SkyMediaBreakpoints.xs;
+        this.checkAndUpdateChildrenType();
+      }
+    );
 
-    this.actionChanges = this.secondaryActionComponents.changes.subscribe(() => {
-      this.checkAndUpdateChildrenType();
-    });
+    this.actionChanges = this.secondaryActionComponents.changes.subscribe(
+      () => {
+        this.checkAndUpdateChildrenType();
+      }
+    );
     if (this.mediaQueryService.current === SkyMediaBreakpoints.xs) {
       this.isMobile = true;
     }
@@ -72,11 +68,10 @@ export class SkySummaryActionBarSecondaryActionsComponent implements AfterConten
       if (this.secondaryActionComponents.length >= 5 || this.isMobile) {
         isDropdown = true;
       }
-      this.secondaryActionComponents.forEach(action => {
+      this.secondaryActionComponents.forEach((action) => {
         action.isDropdown = isDropdown;
       });
     }
     this.changeDetector.detectChanges();
   }
-
 }

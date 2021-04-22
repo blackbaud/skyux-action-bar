@@ -1,20 +1,9 @@
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
-
-import {
-  by,
-  element
-} from 'protractor';
+import { by, element } from 'protractor';
 
 describe('Summary Action Bar in tabset', () => {
-
   let browserSize: SkyHostBrowserBreakpoint;
   let currentTheme: string;
   let currentThemeMode: string;
@@ -64,7 +53,7 @@ describe('Summary Action Bar in tabset', () => {
   }
 
   describe('(size: lg)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/tab-summary-action-bar');
@@ -91,7 +80,7 @@ describe('Summary Action Bar in tabset', () => {
   });
 
   describe('(size: xs)', () => {
-    beforeEach(async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/tab-summary-action-bar');

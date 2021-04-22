@@ -1,28 +1,11 @@
-import {
-  Component,
-  OnDestroy
-} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { SkyModalService } from '@skyux/modals';
+import { SkyThemeService, SkyThemeSettings } from '@skyux/theme';
 
-import {
-  SkyModalService
-} from '@skyux/modals';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import {
-  SkyThemeService,
-  SkyThemeSettings
-} from '@skyux/theme';
-
-import {
-  Subject
-} from 'rxjs';
-
-import {
-  takeUntil
-} from 'rxjs/operators';
-
-import {
-  SkySummaryActionBarModalDemoComponent
-} from './summary-action-bar-modal-demo.component';
+import { SkySummaryActionBarModalDemoComponent } from './summary-action-bar-modal-demo.component';
 
 @Component({
   selector: 'sky-summary-action-bar-demo',
@@ -30,7 +13,6 @@ import {
   styleUrls: ['./summary-action-bar-demo.component.scss']
 })
 export class SkySummaryActionBarDemoComponent implements OnDestroy {
-
   public layout: string = 'vertical';
 
   private ngUnsubscribe = new Subject();
@@ -40,10 +22,8 @@ export class SkySummaryActionBarDemoComponent implements OnDestroy {
     private themeSvc: SkyThemeService
   ) {
     this.themeSvc.settingsChange
-      .pipe(
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe(change => {
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((change) => {
         if (change.currentSettings.theme.name === 'modern') {
           this.layout = 'horizontal';
         } else {
@@ -66,7 +46,9 @@ export class SkySummaryActionBarDemoComponent implements OnDestroy {
   }
 
   public openFullScreenModal() {
-    this.modalService.open(SkySummaryActionBarModalDemoComponent, { fullPage: true });
+    this.modalService.open(SkySummaryActionBarModalDemoComponent, {
+      fullPage: true
+    });
   }
 
   public themeSettingsChange(themeSettings: SkyThemeSettings): void {

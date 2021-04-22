@@ -1,15 +1,7 @@
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
-
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
 describe('Summary Action Bar in split view', () => {
-
   let browserSize: SkyHostBrowserBreakpoint;
   let currentTheme: string;
   let currentThemeMode: string;
@@ -53,7 +45,7 @@ describe('Summary Action Bar in split view', () => {
   }
 
   describe('(size: lg)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/split-view-summary-action-bar');
@@ -80,7 +72,7 @@ describe('Summary Action Bar in split view', () => {
   });
 
   describe('(size: xs)', () => {
-    beforeEach(async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/split-view-summary-action-bar');

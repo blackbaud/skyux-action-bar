@@ -16,16 +16,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarCancelComponent {
-
-/**
- * Indicates whether to disable the cancel action.
- */
+  /**
+   * Indicates whether to disable the cancel action.
+   */
   @Input()
   public disabled = false;
 
-/**
- * Fires when users select the cancel action.
- */
+  /**
+   * Fires when users select the cancel action.
+   */
   @Output()
   public actionClick = new EventEmitter<void>();
 

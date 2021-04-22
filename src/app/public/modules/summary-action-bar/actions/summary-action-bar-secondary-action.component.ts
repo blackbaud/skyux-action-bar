@@ -17,11 +17,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarSecondaryActionComponent {
-
-/**
- * Indicates whether to disable a secondary action.
- * @default false
- */
+  /**
+   * Indicates whether to disable a secondary action.
+   * @default false
+   */
   @Input()
   public disabled = false;
 
@@ -34,17 +33,15 @@ export class SkySummaryActionBarSecondaryActionComponent {
     return this._isDropdown;
   }
 
-/**
- * Fires when users select a secondary action.
- */
+  /**
+   * Fires when users select a secondary action.
+   */
   @Output()
   public actionClick = new EventEmitter<void>();
 
   private _isDropdown: boolean;
 
-  constructor(
-    private changeDetector: ChangeDetectorRef
-  ) { }
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   public onButtonClicked(): void {
     this.actionClick.emit();

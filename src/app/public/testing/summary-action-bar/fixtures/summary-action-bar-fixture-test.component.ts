@@ -1,10 +1,6 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {
-  SkySummaryActionBarFixtureAction
-} from '../summary-action-bar-fixture-action';
+import { SkySummaryActionBarFixtureAction } from '../summary-action-bar-fixture-action';
 
 @Component({
   selector: 'summary-action-bar',
@@ -41,14 +37,14 @@ export class SummaryActionBarTestComponent {
   public summaryBody: string = 'some-content';
 
   public cancelActionClicked(): Promise<void> {
-    return new Promise<void>(resolve => resolve() );
+    return new Promise<void>((resolve) => resolve());
   }
 
   public primaryActionClicked(): Promise<void> {
-    return new Promise<void>(resolve => resolve() );
+    return new Promise<void>((resolve) => resolve());
   }
 
   public secondaryActionClicked(index: number): Promise<void> {
-    return new Promise<void>(resolve => resolve() );
+    return new Promise<void>((resolve) => resolve());
   }
 }

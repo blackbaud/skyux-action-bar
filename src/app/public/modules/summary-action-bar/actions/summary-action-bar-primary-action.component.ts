@@ -16,17 +16,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkySummaryActionBarPrimaryActionComponent {
-
-/**
- * Indicates whether to disable the primary action.
- * @default false
- */
+  /**
+   * Indicates whether to disable the primary action.
+   * @default false
+   */
   @Input()
   public disabled = false;
 
-/**
- * Fires when users select the primary action.
- */
+  /**
+   * Fires when users select the primary action.
+   */
   @Output()
   public actionClick = new EventEmitter<void>();
 

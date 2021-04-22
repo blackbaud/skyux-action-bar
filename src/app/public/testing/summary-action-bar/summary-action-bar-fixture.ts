@@ -1,28 +1,14 @@
-import {
-  DebugElement
-} from '@angular/core';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SkyAppTestUtility } from '@skyux-sdk/testing';
 
-import {
-  ComponentFixture
-} from '@angular/core/testing';
-
-import {
-  By
-} from '@angular/platform-browser';
-
-import {
-  SkyAppTestUtility
-} from '@skyux-sdk/testing';
-
-import {
-  SkySummaryActionBarFixtureAction
-} from './summary-action-bar-fixture-action';
+import { SkySummaryActionBarFixtureAction } from './summary-action-bar-fixture-action';
 
 /**
  * Allows interaction with a SKY UX summary action bar component.
  */
 export class SkySummaryActionBarFixture {
-
   /**
    * The cancel action model.
    */
@@ -44,7 +30,9 @@ export class SkySummaryActionBarFixture {
    */
   public get secondaryActions(): SkySummaryActionBarFixtureAction[] {
     const secondaryBtns = this.getSecondaryActionButtons();
-    return secondaryBtns.map((btn: HTMLButtonElement) => this.buildActionModel(btn));
+    return secondaryBtns.map((btn: HTMLButtonElement) =>
+      this.buildActionModel(btn)
+    );
   }
 
   /**
@@ -58,15 +46,17 @@ export class SkySummaryActionBarFixture {
   private debugEl: DebugElement;
 
   private get isResponsiveMode(): boolean {
-    const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
+    const toggleButton =
+      this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
     return toggleButton !== undefined;
   }
 
-  constructor(
-    private fixture: ComponentFixture<any>,
-    skyTestId: string
-  ) {
-    this.debugEl = SkyAppTestUtility.getDebugElementByTestId(fixture, skyTestId, 'sky-summary-action-bar');
+  constructor(private fixture: ComponentFixture<any>, skyTestId: string) {
+    this.debugEl = SkyAppTestUtility.getDebugElementByTestId(
+      fixture,
+      skyTestId,
+      'sky-summary-action-bar'
+    );
   }
 
   /**
@@ -90,7 +80,8 @@ export class SkySummaryActionBarFixture {
    * Toggles the summary content area open or closed, if in responsive mode.
    */
   public async toggleSummaryContentVisibility(): Promise<void> {
-    const toggleButton = this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
+    const toggleButton =
+      this.getSummaryCollapseButton() ?? this.getSummaryExpandButton();
 
     if (toggleButton !== undefined) {
       toggleButton.click();
@@ -137,9 +128,8 @@ export class SkySummaryActionBarFixture {
   }
 
   private getCancelButton(): HTMLButtonElement {
-    return this.debugEl.query(
-      By.css('sky-summary-action-bar-cancel .sky-btn')
-    )?.nativeElement;
+    return this.debugEl.query(By.css('sky-summary-action-bar-cancel .sky-btn'))
+      ?.nativeElement;
   }
 
   private getPrimaryActionButton(): HTMLButtonElement {
@@ -149,7 +139,6 @@ export class SkySummaryActionBarFixture {
   }
 
   private getSecondaryActionButtons(): HTMLButtonElement[] {
-
     // get the secondary action buttons from the dropdown overlay in responsive mode
     if (this.isResponsiveMode) {
       const resultNodes = document.querySelectorAll(
@@ -159,10 +148,9 @@ export class SkySummaryActionBarFixture {
     }
 
     // otherwise grab them from the component's debug element
-    return this.debugEl.queryAll(
-      By.css('sky-summary-action-bar-secondary-action .sky-btn')
-    )
-    .map((debugEl: DebugElement) => debugEl.nativeElement);
+    return this.debugEl
+      .queryAll(By.css('sky-summary-action-bar-secondary-action .sky-btn'))
+      .map((debugEl: DebugElement) => debugEl.nativeElement);
   }
 
   private getSecondaryActionsDropdownButton(): HTMLButtonElement {
@@ -172,9 +160,8 @@ export class SkySummaryActionBarFixture {
   }
 
   private getSummaryElement(): HTMLButtonElement {
-    return this.debugEl.query(
-      By.css('.sky-summary-action-bar-summary')
-    )?.nativeElement;
+    return this.debugEl.query(By.css('.sky-summary-action-bar-summary'))
+      ?.nativeElement;
   }
 
   private getSummaryCollapseButton(): HTMLButtonElement {
@@ -190,11 +177,15 @@ export class SkySummaryActionBarFixture {
   }
 
   private querySummaryBodyElement(query: string): HTMLElement {
-    return this.debugEl.nativeElement.querySelector(`sky-summary-action-bar-summary ${query}`);
+    return this.debugEl.nativeElement.querySelector(
+      `sky-summary-action-bar-summary ${query}`
+    );
   }
 
   private queryAllSummaryBodyElement(query: string): NodeList {
-    return this.debugEl.nativeElement.querySelectorAll(`sky-summary-action-bar-summary ${query}`);
+    return this.debugEl.nativeElement.querySelectorAll(
+      `sky-summary-action-bar-summary ${query}`
+    );
   }
 
   //#endregion helpers

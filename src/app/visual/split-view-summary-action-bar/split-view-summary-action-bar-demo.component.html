@@ -7,21 +7,13 @@
   id="screenshot-split-view"
   style="max-height: 900px; height: 900px"
 >
-  <sky-split-view
-    [messageStream]="splitViewStream"
-  >
-    <sky-split-view-drawer
-      [width]="width"
-    >
+  <sky-split-view [messageStream]="splitViewStream">
+    <sky-split-view-drawer [width]="width">
       <h3>
         <strong>{{ items.length }}</strong> transactions
       </h3>
-      <ul
-        class="sky-visual-list"
-      >
-        <li *ngFor="let item of items; let i = index"
-          (click)="onItemClick(i)"
-        >
+      <ul class="sky-visual-list">
+        <li *ngFor="let item of items; let i = index" (click)="onItemClick(i)">
           {{ item.name }} <br />
           {{ item.date }} <br />
           {{ item.amount }}
@@ -31,55 +23,41 @@
 
     <sky-split-view-workspace>
       <sky-split-view-workspace-content>
-      <h3>
-        Transaction for {{ activeRecord.name }}
-      </h3>
-      <form>
-        <p>
-          <label>
-            Post date
-            <input
-              name="date"
-              type="text"
-              [(ngModel)]="activeRecord.date"
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            Amount
-            <input
-              name="amount"
-              type="text"
-              [(ngModel)]="activeRecord.amount"
-            />
-          </label>
-        </p>
+        <h3>Transaction for {{ activeRecord.name }}</h3>
+        <form>
+          <p>
+            <label>
+              Post date
+              <input name="date" type="text" [(ngModel)]="activeRecord.date" />
+            </label>
+          </p>
+          <p>
+            <label>
+              Amount
+              <input
+                name="amount"
+                type="text"
+                [(ngModel)]="activeRecord.amount"
+              />
+            </label>
+          </p>
 
-        <input
-          name="submit"
-          type="submit"
-          value="Save transaction"
-        />
+          <input name="submit" type="submit" value="Save transaction" />
 
-        <label>
-          <input
-            name="unsavedWork"
-            type="checkbox"
-            [(ngModel)]="hasUnsavedWork"
-          />
-          Has unsaved work
-        </label>
-      </form>
-    </sky-split-view-workspace-content>
+          <label>
+            <input
+              name="unsavedWork"
+              type="checkbox"
+              [(ngModel)]="hasUnsavedWork"
+            />
+            Has unsaved work
+          </label>
+        </form>
+      </sky-split-view-workspace-content>
       <sky-split-view-workspace-footer>
-        <sky-summary-action-bar
-          id="summary-action-bar"
-        >
+        <sky-summary-action-bar id="summary-action-bar">
           <sky-summary-action-bar-actions>
-            <sky-summary-action-bar-primary-action
-              (actionClick)="printHello()"
-            >
+            <sky-summary-action-bar-primary-action (actionClick)="printHello()">
               Primary action
             </sky-summary-action-bar-primary-action>
             <sky-summary-action-bar-secondary-actions>
@@ -95,9 +73,7 @@
                 Secondary action 2
               </sky-summary-action-bar-secondary-action>
             </sky-summary-action-bar-secondary-actions>
-            <sky-summary-action-bar-cancel
-              (actionClick)="printHello()"
-            >
+            <sky-summary-action-bar-cancel (actionClick)="printHello()">
               Cancel
             </sky-summary-action-bar-cancel>
           </sky-summary-action-bar-actions>

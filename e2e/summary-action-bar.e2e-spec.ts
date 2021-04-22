@@ -1,20 +1,9 @@
-import {
-  SkyHostBrowserBreakpoint
-} from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
+import { SkyHostBrowserBreakpoint } from '@skyux-sdk/e2e/host-browser/host-browser-breakpoint';
 
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
-
-import {
-  by,
-  element
-} from 'protractor';
+import { by, element } from 'protractor';
 
 describe('Summary Action Bar', () => {
-
   let browserSize: SkyHostBrowserBreakpoint;
   let currentTheme: string;
   let currentThemeMode: string;
@@ -80,9 +69,7 @@ describe('Summary Action Bar', () => {
   // XS ONLY
   function runCollapsedBarTest(): void {
     it('should match previous collapsed summary action bar screenshot', async (done) => {
-      await element(by.css(
-        '#summary-action-bar .sky-chevron'
-      )).click();
+      await element(by.css('#summary-action-bar .sky-chevron')).click();
       expect('.sky-summary-action-bar').toMatchBaselineScreenshot(done, {
         screenshotName: getScreenshotName('summary-action-bar-collapsed')
       });
@@ -93,9 +80,11 @@ describe('Summary Action Bar', () => {
   function runCollapsedBarModalTest(): void {
     it('should match previous collapsed summary action bar modal screenshot', async (done) => {
       await element(by.css('#modal-trigger')).click();
-      await element(by.css(
-        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
-      )).click();
+      await element(
+        by.css(
+          '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
+        )
+      ).click();
       expect('.sky-modal').toMatchBaselineScreenshot(done, {
         screenshotName: getScreenshotName('summary-action-bar-modal-collapsed')
       });
@@ -106,17 +95,21 @@ describe('Summary Action Bar', () => {
   function runCollapsedBarFullModalTest(): void {
     it('should match previous collapsed summary action bar full screen modal screenshot', async (done) => {
       await element(by.css('#full-modal-trigger')).click();
-      await element(by.css(
-        '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
-      )).click();
+      await element(
+        by.css(
+          '.sky-modal .sky-summary-action-bar-details-collapse .sky-chevron'
+        )
+      ).click();
       expect('.sky-modal').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('summary-action-bar-full-modal-collapsed')
+        screenshotName: getScreenshotName(
+          'summary-action-bar-full-modal-collapsed'
+        )
       });
     });
   }
 
   describe('(size: lg)', () => {
-    beforeEach( async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/summary-action-bar');
@@ -149,7 +142,7 @@ describe('Summary Action Bar', () => {
   });
 
   describe('(size: xs)', () => {
-    beforeEach(async() => {
+    beforeEach(async () => {
       currentTheme = undefined;
       currentThemeMode = undefined;
       await SkyHostBrowser.get('visual/summary-action-bar');
